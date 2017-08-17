@@ -1,0 +1,4 @@
+[web]
+push_ssl=False
+[hooks]
+changegroup=/opt/cfg/hg/hooks/autoup-opt-up.sh

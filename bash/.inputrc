@@ -1,0 +1,4 @@
+## 060729 from xyb ; auto search in history
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+

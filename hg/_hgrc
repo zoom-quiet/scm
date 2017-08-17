@@ -1,0 +1,53 @@
+[ui]
+username = ZoomQuiet <zoomquiet+hg@gmail.com>
+
+[trusted]
+users = *
+groups = root,wheel,mercurial
+
+[defaults] 
+addremove = --similarity 100
+
+[alias] 
+br = branch
+brs = branches
+up = update
+pl = pull
+pu = push
+rm = remove
+rma = remove -A
+del = remove
+ls = log --style=/Users/zoomq/.zoomq/4shells/mercurial-cli-templates/map-cmdline.slog
+ll = glog --style=/Users/zoomq/.zoomq/4shells/mercurial-cli-templates/map-cmdline.sglog
+ln = log --style=/Users/zoomq/.zoomq/4shells/mercurial-cli-templates/map-cmdline.nlog
+;ll = glog --style compact
+nudge = push --rev .
+
+[extensions]
+graphlog =
+color =
+progress =
+parentrevspec =
+;prompt = /Users/zoomq/Works/3hg/hg-prompt/prompt.py
+;hgext.bookmarks =
+;hgext.purge=
+;hgext.extdiff =
+
+[color]
+status.modified = magenta bold
+status.added = green bold
+status.removed = red bold
+status.deleted = cyan bold
+status.unknown = blue bold
+status.ignored = black bold
+
+[diff]
+git = True
+[git]
+intree = True
+
+[progress]
+refresh = 0.1
+width = 80
+clear-complete = true
+assume-tty = false
