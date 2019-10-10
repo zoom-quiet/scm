@@ -2,12 +2,19 @@
     default = current
 
 [user]
-	name = Zoom.Quiet
+	name = ZoomQuiet
 	email = zoomquiet+git@gmail.com
 
 [core]
 	excludesfile = /Users/zoomq/.gitignore_global
+	autocrlf = true
+	#autocrlf = true # kill windows line END
     #editor = vim
+
+#   190103 101.camp
+[log]
+    date = format:%y%m%d %H%M%S
+
 [alias]
     st = status
     re = remote
@@ -18,8 +25,11 @@
     pl = pull
     del = rm
 
+    brdr = push origin --delete
+    brd = branch -D
+
     f = fetch
-    fix = commit --amend
+    rvl = commit --amend
 
     ls = ls-files
     lt = ls-tree
@@ -29,6 +39,37 @@
     l1 = log --pretty=oneline
     lgs = log --graph --pretty=oneline --abbrev-commit
     ll = log --graph --pretty=format:'%C(yellow)%h%Creset -%C(magenta)%d%Creset %s \n\t%cn %C(cyan)%cr%Creset' --date=relative --abbrev-commit
+
+    # https://docs.gitignore.io/install/command-line
+    #   git config --global alias.ignore '!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi'
+    ig = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
+
+    #   https://github.com/ahmadawais/Emoji-Log/
+    # Git Commit, Add all and Push — in one step.
+    cap = "!f() { git add .; git commit -m \"$@\"; git push; }; f"
+
+    # NEW.
+    new = "!f() { git cap \"📦 NEW: $@\"; }; f"
+    # IMPROVE.
+    imp = "!f() { git cap \"👌 IMPROVE: $@\"; }; f"
+    # FIX.
+    fix = "!f() { git cap \"🐛 FIX: $@\"; }; f"
+    # RELEASE.
+    rlz = "!f() { git cap \"🚀 RELEASE: $@\"; }; f"
+    # DOC.
+    doc = "!f() { git cap \"📖 DOC: $@\"; }; f"
+    # TEST.
+    tst = "!f() { git cap \"✅ TEST: $@\"; }; f"
+
+    # DEBUG.
+    dbg = "!f() { git cap \"💊 DEBUG: $@\"; }; f"
+    # APPEND.
+    apd = "!f() { git cap \"📎 APPEND: $@\"; }; f"
+    # BACKUP.
+    bak = "!f() { git cap \"♻️ BACKUP: $@\"; }; f"
+    # PUBLISH.
+    pub = "!f() { git cap \"🛎 PUBLISH: $@\"; }; f"
+
 
 [color]
     diff = auto
@@ -59,6 +100,9 @@
     nobranch = magenta
 
 #normal, black, red, green, yellow, blue, magenta, cyan, or white
+[pager]
+    diff = diff-so-fancy | less --tabs=1,5 -RFX
+    show = diff-so-fancy | less --tabs=1,5 -RFX
 
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
@@ -76,3 +120,11 @@
 	required = true
 [merge]
 	conflictstyle = diff3
+
+
+
+
+
+
+
+
