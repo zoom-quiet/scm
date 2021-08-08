@@ -2,7 +2,6 @@
 #=========================================================== action bath
 # base ffmpeg make nature video as time_lapse
 #
-# 210731 speed ...
 # 200625 merge BGM loop
 # 200624 merge BGM
 # 200623 ask push
@@ -14,10 +13,12 @@ VNAME=`echo $RES | cut -d "." -f 1`
 echo "got filename : $VNAME"
 echo "exp. as : $AIM.mp4"
 
-ffmpeg -i $RES  -filter_complex "[0:v]setpts=0.25*PTS[v]" -map "[v]" "$AIM-zip.mp4"
+#ffmpeg -i $RES  -filter_complex "[0:v]setpts=0.32*PTS[v]" -map "[v]" "$AIM-zip.mp4"
+
+ffmpeg -i $RES -filter_complex "[0:v]setpts=0.25*PTS[v];[0:a]atempo=4[a]" -map "[v]" -map "[a]" "$AIM-0bgm.mp4"
 
 #ffmpeg -i "$AIM-zip.mp4" -i "11_sleep_with_snow.mp3" -filter_complex [1:a]aloop=loop=10  "$AIM-mu.mp4"
-ffmpeg -y -stream_loop -1 -i "11_sleep_with_snow.mp3" -i "$AIM-zip.mp4" -map 0:a:0 -map 1:v:0 -c:v copy -c:a aac -ac 2 -shortest "$AIM-mu.mp4"
+# ffmpeg -y -stream_loop -1 -i "11_sleep_with_snow.mp3" -i "$AIM-zip.mp4" -map 0:a:0 -map 1:v:0 -c:v copy -c:a aac -ac 2 -shortest "$AIM-mu.mp4"
 
 
 echo "Usage:"
@@ -88,6 +89,7 @@ exit  0
 #ffmpeg -i input.mkv -filter_complex "[0:v]setpts=0.5*PTS[v];[0:a]atempo=2.0[a]" -map "[v]" -map "[a]" output.mkv
 # ffmpeg.exe -ss 00:48:39.883 -to 01:09:26.143 -i F:\a.mp4 -c:v h264_nvenc -filter_complex "[0:v]setpts=0.6666667*PTS[v];[0:a]atempo=1.5[a]" -map "[v]" -map "[a]" -r 25 F:\b.mp4
 # 0.89 1.12359551
+# 0.32 3.125
 #    音量调整为当前音量的1.5倍
 
 #ffmpeg -i input.wav -filter:a "volume=1.5" output.wav
