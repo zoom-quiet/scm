@@ -1,0 +1,16 @@
+version: '3.9'
+services:
+  xubuntu:
+    image: 'docker.io/hectorm/xubuntu:latest'
+    shm_size: '8gb'
+    ports:
+      - '3322:3322/tcp'
+      - '3389:3389/tcp'
+    volumes:
+      - '/opt/mnt:/opt/mnt'
+
+#    devices:
+#      - '/opt/mnt:/dev/dri'
+
+#      - '/dev/dri:/dev/dri'
+#      - '/opt/mnt:/opt/mnt'
